@@ -15,7 +15,7 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
     @IBOutlet var menuTV: UITableView!
     @IBOutlet var menuLeadingConstraint: NSLayoutConstraint!
     
-     var menuItems :[String] = ["Log In","About"]
+     var menuItems : [String] = ["Log In","About"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,6 +28,9 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
         showAndHideMenu()
     }
     
+    @IBAction func tapGesture(_ sender: UITapGestureRecognizer) {
+           showAndHideMenu()
+       }
     
     //MARK: - FUNCTIONS
     func showAndHideMenu() {
@@ -53,9 +56,7 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
            return cell
        }
     
-    @IBAction func tapGesture(_ sender: UITapGestureRecognizer) {
-        showAndHideMenu()
-    }
+   
     
     
 
