@@ -15,6 +15,15 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Egg-jR-CDT">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="RcJ-lY-Euo" appends="YES" id="slB-Ps-5Gg"/>
+                                </connections>
+                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="et3-R5-05q">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="128"/>
                                 <subviews>
@@ -46,15 +55,15 @@
                                 <rect key="frame" x="-250" y="136" width="250" height="760"/>
                                 <subviews>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="CU4-E9-kl0">
-                                        <rect key="frame" x="11" y="51" width="228" height="657"/>
+                                        <rect key="frame" x="8" y="51" width="231" height="657"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <prototypes>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" id="HIX-ju-1eq">
-                                                <rect key="frame" x="0.0" y="28" width="228" height="43.5"/>
+                                                <rect key="frame" x="0.0" y="28" width="231" height="43.5"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="HIX-ju-1eq" id="v57-QV-VeN">
-                                                    <rect key="frame" x="0.0" y="0.0" width="228" height="43.5"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="231" height="43.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                 </tableViewCellContentView>
                                             </tableViewCell>
@@ -82,9 +91,6 @@
                             <constraint firstItem="Db1-g4-9Wd" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="topMargin" constant="92" id="yCm-rb-m17"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
-                        <connections>
-                            <outletCollection property="gestureRecognizers" destination="9Ih-A1-YgU" appends="YES" id="5mz-pr-dlw"/>
-                        </connections>
                     </view>
                     <navigationItem key="navigationItem" id="lKQ-qB-aJS"/>
                     <connections>
@@ -94,9 +100,9 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer id="9Ih-A1-YgU">
+                <tapGestureRecognizer id="RcJ-lY-Euo">
                     <connections>
-                        <action selector="tapGesture:" destination="BYZ-38-t0r" id="hMf-Vb-b7B"/>
+                        <action selector="tapGesture:" destination="BYZ-38-t0r" id="Ivh-pH-JGI"/>
                     </connections>
                 </tapGestureRecognizer>
             </objects>
