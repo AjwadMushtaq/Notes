@@ -45,6 +45,13 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
         }
     }
     
+    func logIn() {
+        //if Auth.auth().currentUser == nil {
+            performSegue(withIdentifier: "toSignUp", sender: self)
+        //}
+    }
+    
+    
     //MARK: - TABLE VIEW FUNCTIONS (SIDE BAR MENU)
        func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
            return menuItems.count
@@ -55,6 +62,19 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
            cell.textLabel?.text = menuItems[indexPath.row]
            return cell
        }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        switch menuItems[indexPath.row] {
+        case "Log In":
+            logIn()
+        case "About":
+            break
+        default:
+            break
+        }
+        showAndHideMenu()
+    }
     
    
     

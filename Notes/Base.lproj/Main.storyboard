@@ -97,6 +97,7 @@
                         <outlet property="menuLeadingConstraint" destination="vAK-7h-G8S" id="qhb-mx-v96"/>
                         <outlet property="menuTV" destination="CU4-E9-kl0" id="9bP-cx-HYP"/>
                         <outlet property="nameLable" destination="fUt-zs-i7N" id="q8d-9R-4Jb"/>
+                        <segue destination="14v-uo-isO" kind="presentation" identifier="toSignUp" id="mYf-HC-hdr"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -107,6 +108,51 @@
                 </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1047.8260869565217" y="120.53571428571428"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="jKO-0p-N9N">
+            <objects>
+                <viewController id="14v-uo-isO" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="xUK-D7-YUx">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rh5-G0-u2y">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="92"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Irs-IA-n5I">
+                                        <rect key="frame" x="29" y="62" width="34" height="30"/>
+                                        <state key="normal" title="Back"/>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sign Up" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fxC-YZ-xRd">
+                                        <rect key="frame" x="335" y="66" width="61" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstItem="fxC-YZ-xRd" firstAttribute="top" secondItem="rh5-G0-u2y" secondAttribute="top" constant="66" id="7Qm-CM-ERH"/>
+                                    <constraint firstAttribute="trailing" secondItem="fxC-YZ-xRd" secondAttribute="trailing" constant="18" id="UT9-WS-P6p"/>
+                                    <constraint firstItem="Irs-IA-n5I" firstAttribute="top" secondItem="rh5-G0-u2y" secondAttribute="top" constant="62" id="VfQ-Fr-Vwx"/>
+                                    <constraint firstItem="Irs-IA-n5I" firstAttribute="leading" secondItem="rh5-G0-u2y" secondAttribute="leading" constant="29" id="XgI-1x-XlH"/>
+                                    <constraint firstAttribute="height" constant="92" id="luh-ID-Idw"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="rh5-G0-u2y" firstAttribute="trailing" secondItem="vgm-GP-kPu" secondAttribute="trailing" id="Gmn-Q9-061"/>
+                            <constraint firstItem="rh5-G0-u2y" firstAttribute="leading" secondItem="vgm-GP-kPu" secondAttribute="leading" id="NOT-IZ-9le"/>
+                            <constraint firstItem="rh5-G0-u2y" firstAttribute="top" secondItem="xUK-D7-YUx" secondAttribute="top" id="br6-rd-aNP"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="vgm-GP-kPu"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="u7z-yP-swD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1927.5362318840582" y="120.53571428571428"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="nHM-G8-n45">
