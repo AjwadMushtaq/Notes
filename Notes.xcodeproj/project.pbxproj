@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		671EEC6A233F808E00EFFA21 /* SelfNotesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671EEC69233F808E00EFFA21 /* SelfNotesViewController.swift */; };
 		673C865E23395D5000CC6B68 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 673C865D23395D5000CC6B68 /* AppDelegate.swift */; };
 		673C866023395D5000CC6B68 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 673C865F23395D5000CC6B68 /* SceneDelegate.swift */; };
 		673C866223395D5000CC6B68 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 673C866123395D5000CC6B68 /* HomeViewController.swift */; };
@@ -21,6 +22,7 @@
 
 /* Begin PBXFileReference section */
 		4192C6F12BA32E41A706F19E /* Pods_Notes.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Notes.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		671EEC69233F808E00EFFA21 /* SelfNotesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelfNotesViewController.swift; sourceTree = "<group>"; };
 		673C865A23395D5000CC6B68 /* Notes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Notes.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		673C865D23395D5000CC6B68 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		673C865F23395D5000CC6B68 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -79,6 +81,7 @@
 				673C866B23395D5100CC6B68 /* LaunchScreen.storyboard */,
 				673C866E23395D5100CC6B68 /* Info.plist */,
 				673C866623395D5000CC6B68 /* Notes.xcdatamodeld */,
+				671EEC69233F808E00EFFA21 /* SelfNotesViewController.swift */,
 			);
 			path = Notes;
 			sourceTree = "<group>";
@@ -268,6 +271,7 @@
 			files = (
 				673C866223395D5000CC6B68 /* HomeViewController.swift in Sources */,
 				673C865E23395D5000CC6B68 /* AppDelegate.swift in Sources */,
+				671EEC6A233F808E00EFFA21 /* SelfNotesViewController.swift in Sources */,
 				673C866023395D5000CC6B68 /* SceneDelegate.swift in Sources */,
 				67F5D55B233D56300055BDE2 /* LogInViewController.swift in Sources */,
 				673C866823395D5000CC6B68 /* Notes.xcdatamodeld in Sources */,

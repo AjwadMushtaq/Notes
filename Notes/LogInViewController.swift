@@ -23,6 +23,7 @@ class LogInViewController: UIViewController {
     @IBOutlet var passwordField: UITextField!
     @IBOutlet var signUpButton: UIButton!
     @IBOutlet var logInButton: UIButton!
+    @IBOutlet var goButton: UIButton!
     
     
     var currentAction = ActionType.Loaded {
@@ -46,8 +47,14 @@ class LogInViewController: UIViewController {
 
     
     
+    @IBAction func signUpButtonTapped(_ sender: Any) {
+        currentAction = .SignUp
+    }
     
     
+    @IBAction func logInButtonTapped(_ sender: UIButton) {
+        currentAction = .EmailLogIn
+    }
     
     
     
@@ -61,21 +68,21 @@ class LogInViewController: UIViewController {
                 passwordField.alpha = 0
                 logInButton.alpha = 1
                 signUpButton.alpha = 1
-                   
+                goButton.alpha = 0
                case .SignUp:
                 headingDetaiLable.text = "Sign Up"
                 emailField.alpha = 1
                 passwordField.alpha = 1
                 logInButton.alpha = 0
-                signUpButton.alpha = 1
-
+                signUpButton.alpha = 0
+                goButton.alpha = 1
                case .EmailLogIn:
-            
                 headingDetaiLable.text = "Log In"
                 emailField.alpha = 1
                 passwordField.alpha = 1
-                logInButton.alpha = 1
+                logInButton.alpha = 0
                 signUpButton.alpha = 0
+                goButton.alpha = 1
                  
                    
                }
@@ -90,7 +97,53 @@ class LogInViewController: UIViewController {
     }
     
     
+    @IBAction func goButtonPressed(_ sender: UIButton) {
+        
+        switch currentAction {
+        case .SignUp:
+            if let email = emailField.text,  let password = passwordField.text  {
+                
+                emailSignUp(email: email, password: password)
+            }
+        case .EmailLogIn:
+        
+            if let email = emailField.text,  let password = passwordField.text  {
+                
+                emailLogIn(email: email, password: password)
+            }
+       
+            
+        default:
+            break
+        }
+    }
     
+    
+    
+    
+    
+    
+    
+    
+    func emailSignUp(email : String , password : String)  {
+        Auth.auth().createUser(withEmail: email, password: password) { (success, error) in
+            if error != nil {
+                print("LoginVc - New User Created Succesfully")
+            } else{
+                print("LoginVC - Error New User Not Created")
+            }
+        }
+    }
+    
+    func emailLogIn(email : String , password : String)  {
+        Auth.auth().signIn(withEmail: email, password: password) { (success, error) in
+            if error != nil {
+                 print("LoginVc - User Logged In Successfully")
+            }else{
+                print("LoginVC - User Not Logged In")
+            }
+        }
+    }
     
     
     
