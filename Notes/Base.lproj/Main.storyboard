@@ -34,8 +34,8 @@
                                             <action selector="menuButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="hec-Nh-8n2"/>
                                         </connections>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ajwad" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fUt-zs-i7N">
-                                        <rect key="frame" x="332" y="94" width="47" height="21"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="None" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fUt-zs-i7N">
+                                        <rect key="frame" x="338" y="94" width="41" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -158,7 +158,7 @@
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="34" id="nM1-cu-vHt"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" textContentType="password"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ThR-Vl-bOL">
                                 <rect key="frame" x="157" y="347" width="100" height="30"/>
@@ -223,11 +223,28 @@
                         <outlet property="logInButton" destination="gse-3N-obl" id="Z8V-al-ca9"/>
                         <outlet property="passwordField" destination="ee5-vl-DfB" id="Ds9-BD-wds"/>
                         <outlet property="signUpButton" destination="ThR-Vl-bOL" id="8JJ-NR-laJ"/>
+                        <segue destination="bYp-UG-Sk8" kind="show" identifier="toHome" id="Ke5-50-ZVi"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="u7z-yP-swD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1927.5362318840582" y="120.53571428571428"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="aP5-CP-m2k">
+            <objects>
+                <viewController id="bYp-UG-Sk8" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="pTi-AB-gSK">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="koi-BQ-FbJ"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="32o-tR-AB8"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4I8-3v-yr5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2743" y="121"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="nHM-G8-n45">
