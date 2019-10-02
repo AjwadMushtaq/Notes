@@ -20,9 +20,9 @@ protocol CreateProfileProtocol {
 
 
 class CreateProfileViewController: UIViewController , UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate {
-
     
-     var delegate : CreateProfileProtocol?
+    
+    var delegate : CreateProfileProtocol?
     
     @IBOutlet var cancleButton: UIButton!
     @IBOutlet var profileTV: UITableView!
@@ -37,40 +37,45 @@ class CreateProfileViewController: UIViewController , UITableViewDataSource, UIT
     }
     
     let properties = ["firstName" , "lastName", "email", "phoneNumber" ]
-    let descriptions = ["First Name" , "Last Name" ,"Email", "PhoneNumber"]
+    let descriptions = ["First Name" , "Last Name" ,"Email", "Phone Number"]
     
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
     }
     
-
+    
     
     // MARK: - Actions
     
     @IBAction func saveButtonPressed(_ sender: UIButton) {
         guard let id = Auth.auth().currentUser?.uid else {
-                   print("you're horrible, sorry")
-                   return
-               }
-               
-               createAccountDictionary.updateValue(false, forKey: "stripeNeedsInfo")
-               Firestore.firestore().collection("profiles").document(id).setData(createAccountDictionary) { (error) in
-                   if error != nil {
-                       print("Error saving profile data: \(error!.localizedDescription)")
-                   } else {
-                       print("All good, saved the profile")
-                       self.delegate?.doneCreatingProfile(profile: self.createAccountDictionary, sender: self)
-                   }
-                   
-               }
+            print("you're horrible, sorry")
+            return
+        }
+        
+        
+        Firestore.firestore().collection("profiles").document(id).setData(createAccountDictionary) { (error) in
+            if error != nil {
+                print("Error saving profile data: \(error!.localizedDescription)")
+            } else {
+                print("All good, saved the profile")
+                self.navigationController?.dismiss(animated: true, completion: nil)
+                self.delegate?.doneCreatingProfile(profile: self.createAccountDictionary, sender: self)
+                self.navigationController?.popViewController(animated: true)
+            }
+            
+        }
     }
     
     @IBAction func cancleButtonPressed(_ sender: UIButton) {
+        
         delegate?.doneCreatingProfile(profile: nil, sender: self)
+        self.navigationController?.popViewController(animated: true)
+        
     }
     
     // did end on exit
@@ -80,15 +85,15 @@ class CreateProfileViewController: UIViewController , UITableViewDataSource, UIT
     
     
     // MARK: - FUNCTIONS
-       
-       func checkSaveButton() {
-           saveButton.isEnabled = true
-           properties.forEach { (one) in
-               if createAccountDictionary[one] == nil {
-                   saveButton.isEnabled = false
-               }
-           }
-       }
+    
+    func checkSaveButton() {
+        saveButton.isEnabled = true
+        properties.forEach { (one) in
+            if createAccountDictionary[one] == nil {
+                saveButton.isEnabled = false
+            }
+        }
+    }
     
     
     
@@ -130,5 +135,5 @@ class CreateProfileViewController: UIViewController , UITableViewDataSource, UIT
         return properties.count
         
     }
-
+    
 }

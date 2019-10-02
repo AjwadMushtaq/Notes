@@ -9,17 +9,45 @@
 import UIKit
 import Firebase
 
-class HomeViewController: UIViewController,UITableViewDelegate,UITableViewDataSource {
+class HomeViewController: UIViewController,UITableViewDelegate,UITableViewDataSource,CreateProfileProtocol {
+    
+    
     
     
     @IBOutlet var nameLable: UILabel!
     @IBOutlet var menuTV: UITableView!
     @IBOutlet var menuLeadingConstraint: NSLayoutConstraint!
     
-    
-    var currentUser : User?
+    lazy var firestore = Firestore.firestore()
     var authListener : AuthStateDidChangeListenerHandle?
-       
+    var profileListener : ListenerRegistration?
+    
+    
+    var currentUserProfile : [String:Any]? {
+          didSet {
+              print("HomeVC - currentUserProfile SET")
+              setupUserProfileData()
+          }
+      }
+    
+    var currentUser : User?{
+        didSet {
+            nameLable?.text = currentUser?.uid ?? "none"
+            if profileListener == nil {
+                if let id = currentUser?.uid {
+                    firestore.collection("profiles").document(id).addSnapshotListener { (snapshot, error) in
+                        if error != nil {
+                            print("HomeVC - error listening to profile changes")
+                        } else if let data = snapshot?.data() {
+                            self.currentUserProfile = data
+                        }
+                    }
+                }
+            }
+            getUserProfile()
+        }
+    }
+    
     
     
     var menuItems : [String] = ["Log In","About" , "Log Out"]
@@ -49,6 +77,20 @@ class HomeViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         
     }
     
+    //MARK: - Delegate
+    
+    func doneCreatingProfile(profile: [String : Any]?, sender: UIViewController?) {
+           
+           if profile != nil {
+               print("Woohooo, profile created")
+           } else {
+               print("This is bad, profile creation cancelled")
+           }
+           
+           sender?.dismiss(animated: true, completion: {
+               
+           })
+       }
     
     //MARK: - ACTIONS
     @IBAction func menuButtonPressed(_ sender: UIButton) {
@@ -70,6 +112,30 @@ class HomeViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         UIView.animate(withDuration: 0.2) {
             self.view.layoutIfNeeded()
         }
+    }
+    
+    func getUserProfile() {
+         if let user = currentUser {
+             firestore.collection("profiles").document(user.uid).getDocument { (snapshot, error) in
+                 if error != nil {
+                     print("HomeVC profile fetch Error: \(error!.localizedDescription)")
+                 } else {
+                     if let profile = snapshot?.data() {
+                         self.currentUserProfile = profile
+                     } else {
+                         print("We don't have this profile, create it...")
+                       
+                         self.performSegue(withIdentifier: "createProfile", sender: self)
+                     }
+                 }
+             }
+         }
+     }
+    
+    func setupUserProfileData() {
+        nameLable.text = currentUserProfile?["firstName"] as? String ?? "noname"
+        
+        
     }
     
     func logIn() {
