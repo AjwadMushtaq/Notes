@@ -50,7 +50,7 @@ class HomeViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
     
     
     
-    var menuItems : [String] = ["Log In","About" , "Log Out"]
+    var menuItems : [String] = ["Log In","About", "Log Out"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -63,7 +63,7 @@ class HomeViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
                     print("HomeVC - user signed in: \(user.uid)")
                     
                     
-                    self.menuItems = ["About" ,"Notes" ,"Log Out"]
+                    self.menuItems = ["About" , "My Profile","Notes" ,"Log Out"]
                     //self.menuItems = ["Log out" , "About" , "My profile" , "Post box","Support"]
                    
                 } else {
@@ -155,8 +155,8 @@ class HomeViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         
     }
     
-    func about()  {
-        performSegue(withIdentifier: "createProfile", sender: self)
+    func myProfile()  {
+        performSegue(withIdentifier: "myProfile", sender: self)
     }
     
     
@@ -177,9 +177,11 @@ class HomeViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         case "Log In":
             logIn()
         case "About":
-            about()
+            break
         case "Log Out":
             logOut()
+            case "My Profile":
+            myProfile()
         default:
             break
         }
