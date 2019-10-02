@@ -40,7 +40,7 @@ class HomeViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
                    
                 } else {
                     print("HomeVC - no user!")
-                    self.menuItems = ["Log in", "About"]
+                    self.menuItems = ["Log In", "About"]
                 }
                 self.menuTV.reloadData()
             }
@@ -89,6 +89,10 @@ class HomeViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         
     }
     
+    func about()  {
+        performSegue(withIdentifier: "createProfile", sender: self)
+    }
+    
     
     //MARK: - TABLE VIEW FUNCTIONS (SIDE BAR MENU)
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -107,7 +111,7 @@ class HomeViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         case "Log In":
             logIn()
         case "About":
-            break
+            about()
         case "Log Out":
             logOut()
         default:

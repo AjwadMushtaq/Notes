@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="bYp-UG-Sk8">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="a24-kb-wSa">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
@@ -98,6 +98,7 @@
                         <outlet property="menuTV" destination="CU4-E9-kl0" id="9bP-cx-HYP"/>
                         <outlet property="nameLable" destination="fUt-zs-i7N" id="q8d-9R-4Jb"/>
                         <segue destination="14v-uo-isO" kind="show" identifier="toSignUp" id="mYf-HC-hdr"/>
+                        <segue destination="bYp-UG-Sk8" kind="show" identifier="createProfile" id="9lk-57-RfZ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -150,6 +151,9 @@
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="emailTextFieldDidEndOnExit:" destination="14v-uo-isO" eventType="editingDidEndOnExit" id="7fF-8T-mPZ"/>
+                                </connections>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ee5-vl-DfB">
                                 <rect key="frame" x="20" y="247" width="374" height="34"/>
@@ -158,7 +162,11 @@
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="34" id="nM1-cu-vHt"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" textContentType="password"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
+                                <connections>
+                                    <action selector="passwordTextFieldDidEndOnExit:" destination="14v-uo-isO" eventType="editingDidEndOnExit" id="T2D-mQ-iYD"/>
+                                    <action selector="passwordTextFieldDidEndOnExit:" destination="14v-uo-isO" eventType="editingDidEnd" id="tD6-MF-TmJ"/>
+                                </connections>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ThR-Vl-bOL">
                                 <rect key="frame" x="157" y="347" width="100" height="30"/>
@@ -223,7 +231,6 @@
                         <outlet property="logInButton" destination="gse-3N-obl" id="Z8V-al-ca9"/>
                         <outlet property="passwordField" destination="ee5-vl-DfB" id="Ds9-BD-wds"/>
                         <outlet property="signUpButton" destination="ThR-Vl-bOL" id="8JJ-NR-laJ"/>
-                        <segue destination="bYp-UG-Sk8" kind="show" identifier="myProfile" id="Ke5-50-ZVi"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="u7z-yP-swD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -273,6 +280,7 @@
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
                                                     <connections>
+                                                        <action selector="textField:" destination="bYp-UG-Sk8" eventType="editingDidEndOnExit" id="eYf-9d-Sbe"/>
                                                         <outlet property="delegate" destination="bYp-UG-Sk8" id="9Rm-KH-XNv"/>
                                                     </connections>
                                                 </textField>
@@ -343,7 +351,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4I8-3v-yr5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2742.0289855072465" y="120.53571428571428"/>
+            <point key="canvasLocation" x="1048" y="836"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="nHM-G8-n45">

@@ -73,6 +73,9 @@ class CreateProfileViewController: UIViewController , UITableViewDataSource, UIT
         delegate?.doneCreatingProfile(profile: nil, sender: self)
     }
     
+    // did end on exit
+    @IBAction func textField(_ sender: Any) {
+    }
     
     
     

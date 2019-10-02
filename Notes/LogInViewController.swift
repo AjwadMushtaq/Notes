@@ -144,8 +144,14 @@ class LogInViewController: UIViewController {
     }
     
     
+    @IBAction func emailTextFieldDidEndOnExit(_ sender: UITextField) {
+    }
+    
+    @IBAction func passwordTextFieldDidEndOnExit(_ sender: UITextField) {
+    }
     
     
+    //MARK: - Functions
     
     
     
