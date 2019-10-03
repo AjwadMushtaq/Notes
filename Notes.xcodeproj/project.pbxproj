@@ -19,6 +19,8 @@
 		678DA8602344DE66006B3724 /* CreateProfileTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 678DA85F2344DE66006B3724 /* CreateProfileTableViewCell.swift */; };
 		678DA8622344DF4E006B3724 /* CreateProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 678DA8612344DF4E006B3724 /* CreateProfileViewController.swift */; };
 		678DA864234551B6006B3724 /* MyProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 678DA863234551B6006B3724 /* MyProfileViewController.swift */; };
+		678DA8662346787E006B3724 /* NotesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 678DA8652346787E006B3724 /* NotesViewController.swift */; };
+		678DA8682346795A006B3724 /* CurrentNoteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 678DA8672346795A006B3724 /* CurrentNoteViewController.swift */; };
 		67F5D55B233D56300055BDE2 /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67F5D55A233D56300055BDE2 /* LogInViewController.swift */; };
 		E17BB8A285B846A876E10227 /* Pods_Notes.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4192C6F12BA32E41A706F19E /* Pods_Notes.framework */; };
 /* End PBXBuildFile section */
@@ -39,6 +41,8 @@
 		678DA85F2344DE66006B3724 /* CreateProfileTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateProfileTableViewCell.swift; sourceTree = "<group>"; };
 		678DA8612344DF4E006B3724 /* CreateProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateProfileViewController.swift; sourceTree = "<group>"; };
 		678DA863234551B6006B3724 /* MyProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfileViewController.swift; sourceTree = "<group>"; };
+		678DA8652346787E006B3724 /* NotesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesViewController.swift; sourceTree = "<group>"; };
+		678DA8672346795A006B3724 /* CurrentNoteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentNoteViewController.swift; sourceTree = "<group>"; };
 		67F5D55A233D56300055BDE2 /* LogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
 		73B41F7F280591FA30AA542E /* Pods-Notes.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Notes.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Notes/Pods-Notes.debug.xcconfig"; sourceTree = "<group>"; };
 		F6697891A5864633EC7654F8 /* Pods-Notes.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Notes.release.xcconfig"; path = "Pods/Target Support Files/Pods-Notes/Pods-Notes.release.xcconfig"; sourceTree = "<group>"; };
@@ -84,6 +88,8 @@
 				678DA85F2344DE66006B3724 /* CreateProfileTableViewCell.swift */,
 				678DA8612344DF4E006B3724 /* CreateProfileViewController.swift */,
 				678DA863234551B6006B3724 /* MyProfileViewController.swift */,
+				678DA8652346787E006B3724 /* NotesViewController.swift */,
+				678DA8672346795A006B3724 /* CurrentNoteViewController.swift */,
 				673C866323395D5000CC6B68 /* Main.storyboard */,
 				673C867423395DBB00CC6B68 /* GoogleService-Info.plist */,
 				673C866923395D5100CC6B68 /* Assets.xcassets */,
@@ -283,7 +289,9 @@
 				673C865E23395D5000CC6B68 /* AppDelegate.swift in Sources */,
 				678DA864234551B6006B3724 /* MyProfileViewController.swift in Sources */,
 				671EEC6A233F808E00EFFA21 /* SelfNotesViewController.swift in Sources */,
+				678DA8682346795A006B3724 /* CurrentNoteViewController.swift in Sources */,
 				673C866023395D5000CC6B68 /* SceneDelegate.swift in Sources */,
+				678DA8662346787E006B3724 /* NotesViewController.swift in Sources */,
 				67F5D55B233D56300055BDE2 /* LogInViewController.swift in Sources */,
 				673C866823395D5000CC6B68 /* Notes.xcdatamodeld in Sources */,
 				678DA8602344DE66006B3724 /* CreateProfileTableViewCell.swift in Sources */,

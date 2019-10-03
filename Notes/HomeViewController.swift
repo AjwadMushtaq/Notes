@@ -160,6 +160,10 @@ class HomeViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
     }
     
     
+    func notes()  {
+        performSegue(withIdentifier: "toNotes", sender: self)
+    }
+    
     //MARK: - TABLE VIEW FUNCTIONS (SIDE BAR MENU)
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return menuItems.count
@@ -180,6 +184,8 @@ class HomeViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
             break
         case "Log Out":
             logOut()
+            case "Notes":
+            notes()
             case "My Profile":
             myProfile()
         default:
