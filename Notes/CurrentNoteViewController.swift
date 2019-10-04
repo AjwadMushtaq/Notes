@@ -7,24 +7,53 @@
 //
 
 import UIKit
+import Firebase
 
 class CurrentNoteViewController: UIViewController {
 
+    @IBOutlet var topLable: UILabel!
+    @IBOutlet var dateLable: UILabel!
+    @IBOutlet var noteTextView: UITextView!
+    
+    
+    
+    
+    var createNoteDictionary = [String: Any]() {
+           didSet {
+               print("Current data: \(createNoteDictionary)")
+           }
+       }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        dateLable.text = Date().description
+        
     }
     
+    @IBAction func backButtonPressed(_ sender: UIButton) {
+        
+        guard let id = Auth.auth().currentUser?.uid else {
+                   print("you're horrible, sorry")
+                   return
+               }
+        
+        createNoteDictionary.updateValue(dateLable.text, forKey: "date")
+       createNoteDictionary.updateValue(noteTextView.text, forKey: "notes")
+        Firestore.firestore().collection("notes").document(id).collection("note").document().setData(createNoteDictionary) { (error) in
+                   if error != nil {
+                       print("Current Note VC -  Error saving curent note data: \(error!.localizedDescription)")
+                   } else {
+                       print("Current Note VC - All good, saved the current note")
+                       self.navigationController?.dismiss(animated: true, completion: nil)
+                       self.navigationController?.popViewController(animated: true)
+                   }
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+               }
+ 
     }
-    */
+    
+    
 
 }
