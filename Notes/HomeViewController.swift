@@ -22,6 +22,7 @@ class HomeViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
     var authListener : AuthStateDidChangeListenerHandle?
     var profileListener : ListenerRegistration?
     
+    var documentId: [String] = []
     
     var currentUserProfile : [String:Any]? {
           didSet {
@@ -65,7 +66,7 @@ class HomeViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
                     
                     self.menuItems = ["About" , "My Profile","Notes" ,"Log Out"]
                     //self.menuItems = ["Log out" , "About" , "My profile" , "Post box","Support"]
-                   
+                    self.downloadNotesData()
                 } else {
                     print("HomeVC - no user!")
                     self.menuItems = ["Log In", "About"]
@@ -134,9 +135,31 @@ class HomeViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
     
     func setupUserProfileData() {
         nameLable.text = currentUserProfile?["firstName"] as? String ?? "noname"
-        
-        
     }
+    
+    
+    func downloadNotesData() {
+      
+      guard let id = Auth.auth().currentUser?.uid else {
+          print("you're horrible, sorry")
+          return
+      }
+      
+      
+      Firestore.firestore().collection("notes").document(id).collection("note").getDocuments() { (querySnapshot, err) in
+          if let err = err {
+              print("Error getting Notes documents: \(err)")
+          } else {
+              for document in querySnapshot!.documents {
+                  print("\(document.documentID) => \(document.data())")
+                  
+                  self.documentId.append(document.documentID)
+
+              }
+          }
+      }
+       
+      }
     
     func logIn() {
         //if Auth.auth().currentUser == nil {
@@ -193,6 +216,15 @@ class HomeViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         }
         showAndHideMenu()
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "toNotes" {
+            if let destination = segue.destination as? NotesViewController {
+                destination.documentId = self.documentId
+            }
+        }
+        }
+    
     
     
     
