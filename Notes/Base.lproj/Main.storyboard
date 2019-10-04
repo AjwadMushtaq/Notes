@@ -505,13 +505,36 @@
                                     <segue destination="V5O-aa-7uo" kind="show" id="uQU-Ce-yh4"/>
                                 </connections>
                             </button>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="oSo-QL-g8I">
+                                <rect key="frame" x="15" y="82" width="384" height="773"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="773" id="8di-yv-QcX"/>
+                                </constraints>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" id="yY5-ge-YaD">
+                                        <rect key="frame" x="0.0" y="28" width="384" height="43.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="yY5-ge-YaD" id="78C-v5-8nz">
+                                            <rect key="frame" x="0.0" y="0.0" width="384" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="Z4V-jC-4HQ" firstAttribute="top" secondItem="uZr-fE-cKo" secondAttribute="top" id="4XD-v5-3ih"/>
+                            <constraint firstItem="oSo-QL-g8I" firstAttribute="leading" secondItem="uZr-fE-cKo" secondAttribute="leading" constant="15" id="4je-MP-0Jl"/>
                             <constraint firstItem="8Iy-e2-sqj" firstAttribute="top" secondItem="uZr-fE-cKo" secondAttribute="top" constant="3" id="704-7o-CNL"/>
+                            <constraint firstItem="oSo-QL-g8I" firstAttribute="top" secondItem="Z4V-jC-4HQ" secondAttribute="bottom" constant="8" id="7Nf-qw-Nn6"/>
                             <constraint firstItem="uZr-fE-cKo" firstAttribute="trailing" secondItem="8Iy-e2-sqj" secondAttribute="trailing" constant="30" id="IO3-mv-scA"/>
+                            <constraint firstItem="uZr-fE-cKo" firstAttribute="trailing" secondItem="oSo-QL-g8I" secondAttribute="trailing" constant="15" id="NNh-Y5-5Tb"/>
+                            <constraint firstItem="oSo-QL-g8I" firstAttribute="top" secondItem="Z4V-jC-4HQ" secondAttribute="bottom" constant="8" id="ZeQ-qM-mU4"/>
+                            <constraint firstItem="oSo-QL-g8I" firstAttribute="leading" secondItem="uZr-fE-cKo" secondAttribute="leading" constant="15" id="ldv-CU-S2o"/>
                             <constraint firstItem="Z4V-jC-4HQ" firstAttribute="leading" secondItem="uZr-fE-cKo" secondAttribute="leading" constant="26" id="mjx-KX-dwL"/>
+                            <constraint firstItem="uZr-fE-cKo" firstAttribute="trailing" secondItem="oSo-QL-g8I" secondAttribute="trailing" constant="15" id="mtx-MN-0Pl"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="uZr-fE-cKo"/>
                     </view>
@@ -522,7 +545,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rdX-t7-t87" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1928" y="846"/>
+            <point key="canvasLocation" x="1927.5362318840582" y="845.75892857142856"/>
         </scene>
         <!--Current Note View Controller-->
         <scene sceneID="OVy-hi-ye4">
