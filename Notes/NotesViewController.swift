@@ -12,7 +12,7 @@ class NotesViewController: UIViewController,UITableViewDelegate,UITableViewDataS
     
 
     var documentId: [String] = []
-    
+    var notesDictionary : [Note] = []
    
     
     
@@ -20,18 +20,18 @@ class NotesViewController: UIViewController,UITableViewDelegate,UITableViewDataS
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
-        downloadData()
-        print(self.documentId.count)
+        //downloadData()
+        //print(self.documentId.count)
     
     }
     
     override func viewDidAppear(_ animated: Bool) {
          print(self.documentId.count)
-        dump(documentId)
+        //dump(documentId)
     }
     
     override func viewDidDisappear(_ animated: Bool) {
-        dump(documentId)
+        //dump(documentId)
     }
     
     
@@ -82,7 +82,7 @@ class NotesViewController: UIViewController,UITableViewDelegate,UITableViewDataS
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        cell.textLabel?.text = documentId[indexPath.row]
+        cell.textLabel?.text = notesDictionary[indexPath.row].note
         return cell
         
     }

@@ -23,6 +23,8 @@ class HomeViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
     var profileListener : ListenerRegistration?
     
     var documentId: [String] = []
+    var notesDictionary : [Note] = []
+    
     
     var currentUserProfile : [String:Any]? {
           didSet {
@@ -153,6 +155,13 @@ class HomeViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
               for document in querySnapshot!.documents {
                   print("\(document.documentID) => \(document.data())")
                   
+               let newNote = Note(date: document["date"] as! String, note: document["note"] as!String)
+                
+                self.notesDictionary.append(newNote)
+                
+                
+        
+                
                   self.documentId.append(document.documentID)
 
               }
@@ -221,6 +230,7 @@ class HomeViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         if segue.identifier == "toNotes" {
             if let destination = segue.destination as? NotesViewController {
                 destination.documentId = self.documentId
+                destination.notesDictionary = self.notesDictionary
             }
         }
         }
