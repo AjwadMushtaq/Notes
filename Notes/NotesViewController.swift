@@ -13,7 +13,8 @@ class NotesViewController: UIViewController,UITableViewDelegate,UITableViewDataS
 
     var documentId: [String] = []
     var notesDictionary : [Note] = []
-   
+   var currentid = String()
+   var currentNote = String()
     
     
     override func viewDidLoad() {
@@ -89,17 +90,26 @@ class NotesViewController: UIViewController,UITableViewDelegate,UITableViewDataS
 
     
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+         let destination = self.storyboard?.instantiateViewController(withIdentifier: "existingNote") as! ExisitingNoteViewController
+        
+        self.currentid = documentId[indexPath.row]
+        self.currentNote = notesDictionary[indexPath.row].note
+        
+        print(documentId[indexPath.row])
+        print(notesDictionary[indexPath.row].note)
+        self.performSegue(withIdentifier: "existingNote", sender: self)
+    }
     
     
-    
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destination.
-     // Pass the selected object to the new view controller.
-     }
-     */
+   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+       if segue.destination is ExisitingNoteViewController{
+           let vc = segue.destination as! ExisitingNoteViewController
+        vc.id = self.currentid
+        vc.note = self.currentNote
+           
+       }
+       
+   }
     
 }

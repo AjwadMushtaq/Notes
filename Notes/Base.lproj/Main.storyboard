@@ -545,11 +545,65 @@
                     <navigationItem key="navigationItem" id="8iN-UD-Cdr"/>
                     <connections>
                         <segue destination="V5O-aa-7uo" kind="show" identifier="toCurrentNote" id="lsM-mw-yVY"/>
+                        <segue destination="FNk-kq-08J" kind="show" identifier="existingNote" id="u4I-re-qeA"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rdX-t7-t87" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1927.5362318840582" y="845.75892857142856"/>
+        </scene>
+        <!--Exisiting Note View Controller-->
+        <scene sceneID="foW-i8-xAl">
+            <objects>
+                <viewController storyboardIdentifier="existingNote" id="FNk-kq-08J" customClass="ExisitingNoteViewController" customModule="Notes" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Pdb-hJ-Jbk">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2h3-lL-9UV">
+                                <rect key="frame" x="26" y="44" width="34" height="30"/>
+                                <state key="normal" title="Back"/>
+                                <connections>
+                                    <action selector="backButtonPressed:" destination="FNk-kq-08J" eventType="touchUpInside" id="a0Y-VG-OUO"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Note" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XzE-Os-N9Y">
+                                <rect key="frame" x="352" y="49" width="37" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="ghP-2d-Jqt">
+                                <rect key="frame" x="20" y="82" width="374" height="780"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="780" id="snK-fT-FCg"/>
+                                </constraints>
+                                <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="XzE-Os-N9Y" firstAttribute="top" secondItem="V4M-LK-6gB" secondAttribute="top" constant="5" id="23Z-yC-yeh"/>
+                            <constraint firstItem="V4M-LK-6gB" firstAttribute="trailing" secondItem="XzE-Os-N9Y" secondAttribute="trailing" constant="25" id="Izu-5d-XA3"/>
+                            <constraint firstItem="ghP-2d-Jqt" firstAttribute="top" secondItem="2h3-lL-9UV" secondAttribute="bottom" constant="8" id="MnU-1z-tdO"/>
+                            <constraint firstItem="ghP-2d-Jqt" firstAttribute="leading" secondItem="V4M-LK-6gB" secondAttribute="leading" constant="20" id="ZMG-cN-GHh"/>
+                            <constraint firstItem="2h3-lL-9UV" firstAttribute="top" secondItem="V4M-LK-6gB" secondAttribute="top" id="gGD-yu-rmn"/>
+                            <constraint firstItem="V4M-LK-6gB" firstAttribute="trailing" secondItem="ghP-2d-Jqt" secondAttribute="trailing" constant="20" id="hde-zQ-52C"/>
+                            <constraint firstItem="2h3-lL-9UV" firstAttribute="leading" secondItem="V4M-LK-6gB" secondAttribute="leading" constant="26" id="pBN-AI-til"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="V4M-LK-6gB"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="NIU-gq-JOc"/>
+                    <connections>
+                        <outlet property="textView" destination="ghP-2d-Jqt" id="WLe-yg-JxL"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="c3b-6b-Fgh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1927.5362318840582" y="1559.5982142857142"/>
         </scene>
         <!--Current Note View Controller-->
         <scene sceneID="OVy-hi-ye4">
