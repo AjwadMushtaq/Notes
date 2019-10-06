@@ -16,6 +16,9 @@ class NotesViewController: UIViewController,UITableViewDelegate,UITableViewDataS
     var currentid = String()
     var currentNote = String()
     
+    
+    
+    
     @IBOutlet var notesTv: UITableView!
     
     override func viewDidLoad() {
@@ -103,6 +106,31 @@ class NotesViewController: UIViewController,UITableViewDelegate,UITableViewDataS
         self.performSegue(withIdentifier: "existingNote", sender: self)
     }
     
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        
+       
+                
+        
+       let deleteAction = UIContextualAction(style: .normal, title: "delete") { (action, view, completionHandler) in
+        
+        guard let id = Auth.auth().currentUser?.uid else {
+            print("you're horrible, sorry")
+            return
+        }
+        let item = self.documentId[indexPath.row]
+        
+        Firestore.firestore().collection("notes").document(id).collection("note").document(item).delete()
+        
+        
+        
+        
+       print("delete")
+       completionHandler(true)
+        self.downloadNotesData()
+       }
+       
+       return UISwipeActionsConfiguration(actions: [deleteAction])
+       }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.destination is ExisitingNoteViewController{
