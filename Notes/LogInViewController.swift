@@ -43,7 +43,7 @@ class LogInViewController: UIViewController {
         
     }
     
-    //MARK: - FUNCTIONS
+    //MARK: - Actions
     
     
     
@@ -57,39 +57,7 @@ class LogInViewController: UIViewController {
     }
     
     
-    
-    
-    
-    func updateUI()  {
-        switch currentAction {
-        case .Loaded:
-            headingDetaiLable.text = "Select"
-            emailField.alpha = 0
-            passwordField.alpha = 0
-            logInButton.alpha = 1
-            signUpButton.alpha = 1
-            goButton.alpha = 0
-        case .SignUp:
-            headingDetaiLable.text = "Sign Up"
-            emailField.alpha = 1
-            passwordField.alpha = 1
-            logInButton.alpha = 0
-            signUpButton.alpha = 0
-            goButton.alpha = 1
-        case .EmailLogIn:
-            headingDetaiLable.text = "Log In"
-            emailField.alpha = 1
-            passwordField.alpha = 1
-            logInButton.alpha = 0
-            signUpButton.alpha = 0
-            goButton.alpha = 1
-            
-            
-        }
-    }
-    
-    
-    //MARK: - ACTIONS
+
     
     @IBAction func backButtonPressed(_ sender: UIButton) {
         navigationController?.popViewController(animated: true)
@@ -122,6 +90,35 @@ class LogInViewController: UIViewController {
         }
     }
     
+    //MARK: - Functions
+    
+    func updateUI()  {
+         switch currentAction {
+         case .Loaded:
+             headingDetaiLable.text = "Select"
+             emailField.alpha = 0
+             passwordField.alpha = 0
+             logInButton.alpha = 1
+             signUpButton.alpha = 1
+             goButton.alpha = 0
+         case .SignUp:
+             headingDetaiLable.text = "Sign Up"
+             emailField.alpha = 1
+             passwordField.alpha = 1
+             logInButton.alpha = 0
+             signUpButton.alpha = 0
+             goButton.alpha = 1
+         case .EmailLogIn:
+             headingDetaiLable.text = "Log In"
+             emailField.alpha = 1
+             passwordField.alpha = 1
+             logInButton.alpha = 0
+             signUpButton.alpha = 0
+             goButton.alpha = 1
+             
+             
+         }
+     }
     
     func emailSignUp(email : String , password : String)  {
         
@@ -151,7 +148,7 @@ class LogInViewController: UIViewController {
     }
     
     
-    //MARK: - Functions
+    
     
     
     
@@ -178,9 +175,7 @@ class LogInViewController: UIViewController {
 
     }
     
-    
-    
-    
+ 
     
     
 }

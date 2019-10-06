@@ -27,11 +27,11 @@ class HomeViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
     
     
     var currentUserProfile : [String:Any]? {
-          didSet {
-              print("HomeVC - currentUserProfile SET")
-              setupUserProfileData()
-          }
-      }
+        didSet {
+            print("HomeVC - currentUserProfile SET")
+            setupUserProfileData()
+        }
+    }
     
     var currentUser : User?{
         didSet {
@@ -83,17 +83,17 @@ class HomeViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
     //MARK: - Delegate
     
     func doneCreatingProfile(profile: [String : Any]?, sender: UIViewController?) {
-           
-           if profile != nil {
-               print("Woohooo, profile created")
-           } else {
-               print("This is bad, profile creation cancelled")
-           }
-           
-           sender?.dismiss(animated: true, completion: {
-               
-           })
-       }
+        
+        if profile != nil {
+            print("Woohooo, profile created")
+        } else {
+            print("This is bad, profile creation cancelled")
+        }
+        
+        sender?.dismiss(animated: true, completion: {
+            
+        })
+    }
     
     //MARK: - ACTIONS
     @IBAction func menuButtonPressed(_ sender: UIButton) {
@@ -118,22 +118,22 @@ class HomeViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
     }
     
     func getUserProfile() {
-         if let user = currentUser {
-             firestore.collection("profiles").document(user.uid).getDocument { (snapshot, error) in
-                 if error != nil {
-                     print("HomeVC profile fetch Error: \(error!.localizedDescription)")
-                 } else {
-                     if let profile = snapshot?.data() {
-                         self.currentUserProfile = profile
-                     } else {
-                         print("We don't have this profile, create it...")
-                       
-                         self.performSegue(withIdentifier: "createProfile", sender: self)
-                     }
-                 }
-             }
-         }
-     }
+        if let user = currentUser {
+            firestore.collection("profiles").document(user.uid).getDocument { (snapshot, error) in
+                if error != nil {
+                    print("HomeVC profile fetch Error: \(error!.localizedDescription)")
+                } else {
+                    if let profile = snapshot?.data() {
+                        self.currentUserProfile = profile
+                    } else {
+                        print("We don't have this profile, create it...")
+                        
+                        self.performSegue(withIdentifier: "createProfile", sender: self)
+                    }
+                }
+            }
+        }
+    }
     
     func setupUserProfileData() {
         nameLable.text = currentUserProfile?["firstName"] as? String ?? "noname"
@@ -141,34 +141,34 @@ class HomeViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
     
     
     func downloadNotesData() {
-      
-      guard let id = Auth.auth().currentUser?.uid else {
-          print("you're horrible, sorry")
-          return
-      }
-      
-      
-      Firestore.firestore().collection("notes").document(id).collection("note").getDocuments() { (querySnapshot, err) in
-          if let err = err {
-              print("Error getting Notes documents: \(err)")
-          } else {
-              for document in querySnapshot!.documents {
-                  print("\(document.documentID) => \(document.data())")
-                  
-               let newNote = Note(date: document["date"] as! String, note: document["note"] as!String)
-                
-                self.notesDictionary.append(newNote)
-                
-                
         
-                
-                  self.documentId.append(document.documentID)
-
-              }
-          }
-      }
-       
-      }
+        guard let id = Auth.auth().currentUser?.uid else {
+            print("you're horrible, sorry")
+            return
+        }
+        
+        
+        Firestore.firestore().collection("notes").document(id).collection("note").getDocuments() { (querySnapshot, err) in
+            if let err = err {
+                print("Error getting Notes documents: \(err)")
+            } else {
+                for document in querySnapshot!.documents {
+                    print("\(document.documentID) => \(document.data())")
+                    
+                    let newNote = Note(date: document["date"] as! String, note: document["note"] as!String)
+                    
+                    self.notesDictionary.append(newNote)
+                    
+                    
+                    
+                    
+                    self.documentId.append(document.documentID)
+                    
+                }
+            }
+        }
+        
+    }
     
     func logIn() {
         //if Auth.auth().currentUser == nil {
@@ -216,9 +216,9 @@ class HomeViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
             break
         case "Log Out":
             logOut()
-            case "Notes":
+        case "Notes":
             notes()
-            case "My Profile":
+        case "My Profile":
             myProfile()
         default:
             break
@@ -233,7 +233,7 @@ class HomeViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
                 destination.notesDictionary = self.notesDictionary
             }
         }
-        }
+    }
     
     
     
