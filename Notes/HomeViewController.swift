@@ -23,7 +23,7 @@ class HomeViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
     var profileListener : ListenerRegistration?
     
     var documentId: [String] = []
-    var notesDictionary : [Note] = []
+    var notesArray : [Note] = []
     
     
     var currentUserProfile : [String:Any]? {
@@ -67,8 +67,7 @@ class HomeViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
                     
                     
                     self.menuItems = ["About" , "My Profile","Notes" ,"Log Out"]
-                    //self.menuItems = ["Log out" , "About" , "My profile" , "Post box","Support"]
-                    self.downloadNotesData()
+                    //self.downloadNotesData()
                 } else {
                     print("HomeVC - no user!")
                     self.menuItems = ["Log In", "About"]
@@ -157,7 +156,7 @@ class HomeViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
                     
                     let newNote = Note(date: document["date"] as! String, note: document["note"] as!String)
                     
-                    self.notesDictionary.append(newNote)
+                    self.notesArray.append(newNote)
                     
                     
                     
@@ -226,14 +225,14 @@ class HomeViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         showAndHideMenu()
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "toNotes" {
-            if let destination = segue.destination as? NotesViewController {
-                destination.documentId = self.documentId
-                destination.notesDictionary = self.notesDictionary
-            }
-        }
-    }
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        if segue.identifier == "toNotes" {
+//            if let destination = segue.destination as? NotesViewController {
+//                destination.documentId = self.documentId
+//                destination.notesDictionary = self.notesDictionary
+//            }
+//        }
+//    }
     
     
     

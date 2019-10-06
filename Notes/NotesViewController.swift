@@ -10,31 +10,25 @@ import UIKit
 import Firebase
 class NotesViewController: UIViewController,UITableViewDelegate,UITableViewDataSource {
     
-
-    var documentId: [String] = []
-    var notesDictionary : [Note] = []
-   var currentid = String()
-   var currentNote = String()
     
+    var documentId: [String] = []
+    var notesArray : [Note] = []
+    var currentid = String()
+    var currentNote = String()
+    
+    @IBOutlet var notesTv: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Do any additional setup after loading the view.
-        //downloadData()
-        //print(self.documentId.count)
-    
+        
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-         print(self.documentId.count)
-        //dump(documentId)
+    override func viewWillAppear(_ animated: Bool) {
+        
+        self.downloadNotesData()
+        
     }
-    
-    override func viewDidDisappear(_ animated: Bool) {
-        //dump(documentId)
-    }
-    
     
     
     
@@ -47,33 +41,41 @@ class NotesViewController: UIViewController,UITableViewDelegate,UITableViewDataS
     }
     
     // MARK: - Functions
-    func downloadData() {
+    func downloadNotesData() {
+        
         
         guard let id = Auth.auth().currentUser?.uid else {
             print("you're horrible, sorry")
             return
         }
-        
-        
+        self.documentId = []
+        self.notesArray = []
         Firestore.firestore().collection("notes").document(id).collection("note").getDocuments() { (querySnapshot, err) in
+            
+         
+            
             if let err = err {
-                print("Error getting documents: \(err)")
+                print("Error getting Notes documents: \(err)")
             } else {
                 for document in querySnapshot!.documents {
                     print("\(document.documentID) => \(document.data())")
                     
+                    let newNote = Note(date: document["date"] as! String, note: document["note"] as!String)
+                    
+                    self.notesArray.append(newNote)
+                    
                     self.documentId.append(document.documentID)
-                
-                    print(self.documentId.count)
+                    
                 }
+                print(self.notesArray.count)
+                self.notesTv.reloadData()
             }
         }
-         dump(documentId)
-        
-      
-        }
         
         
+    }
+    
+    
     
     
     // MARK: - TableView
@@ -83,33 +85,36 @@ class NotesViewController: UIViewController,UITableViewDelegate,UITableViewDataS
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        cell.textLabel?.text = notesDictionary[indexPath.row].note
+        cell.textLabel?.text = notesArray[indexPath.row].note
         return cell
         
     }
-
+    
     
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-         let destination = self.storyboard?.instantiateViewController(withIdentifier: "existingNote") as! ExisitingNoteViewController
-        
+       
         self.currentid = documentId[indexPath.row]
-        self.currentNote = notesDictionary[indexPath.row].note
+        self.currentNote = notesArray[indexPath.row].note
         
         print(documentId[indexPath.row])
-        print(notesDictionary[indexPath.row].note)
+        print(notesArray[indexPath.row].note)
+        self.notesArray.removeAll()
         self.performSegue(withIdentifier: "existingNote", sender: self)
     }
     
     
-   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-       if segue.destination is ExisitingNoteViewController{
-           let vc = segue.destination as! ExisitingNoteViewController
-        vc.currentNoteId = self.currentid
-        vc.note = self.currentNote
-           
-       }
-       
-   }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.destination is ExisitingNoteViewController{
+            let vc = segue.destination as! ExisitingNoteViewController
+            vc.currentNoteId = self.currentid
+            vc.note = self.currentNote
+            
+        }
+        
+    }
+    
+    
+    
     
 }

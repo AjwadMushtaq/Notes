@@ -544,6 +544,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="8iN-UD-Cdr"/>
                     <connections>
+                        <outlet property="notesTv" destination="oSo-QL-g8I" id="efE-AF-kKJ"/>
                         <segue destination="V5O-aa-7uo" kind="show" identifier="toCurrentNote" id="lsM-mw-yVY"/>
                         <segue destination="FNk-kq-08J" kind="show" identifier="existingNote" id="u4I-re-qeA"/>
                     </connections>
