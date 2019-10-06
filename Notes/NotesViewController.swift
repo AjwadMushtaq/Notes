@@ -105,7 +105,7 @@ class NotesViewController: UIViewController,UITableViewDelegate,UITableViewDataS
    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
        if segue.destination is ExisitingNoteViewController{
            let vc = segue.destination as! ExisitingNoteViewController
-        vc.id = self.currentid
+        vc.currentNoteId = self.currentid
         vc.note = self.currentNote
            
        }
