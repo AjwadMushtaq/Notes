@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+import LocalAuthentication
 
 enum ActionType {
     case Loaded
@@ -40,6 +41,39 @@ class LogInViewController: UIViewController {
         
         // Do any additional setup after loading the view.
         currentAction = .Loaded
+        if Auth.auth().currentUser != nil {
+                     
+                     //Requests to use touch id
+                     let myContext = LAContext()
+                     let myLocalizedReasonString = "Please authenticate using touch id"
+                     
+                     //Refrence to error
+                     var authError: NSError?
+                     //Checks if the user has biometrics registered
+                     if myContext.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: &authError) {
+                         //Authenticates the user using biometrics
+                         myContext.evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, localizedReason: myLocalizedReasonString) { success, evaluateError in
+                             //Queue to carry out actions once decision evaluated
+                             DispatchQueue.main.async {
+                                 if success {
+                                     // User authenticated successfully, take appropriate action
+                                     // Segue used to transition on to main menu page
+                                     // Transition marked as (identifier = loginSucess") on storyboard
+                                     self.navigationController?.popViewController(animated: true)
+                                 } else {
+                                     // User did not authenticate successfully, look at error and take appropriate action
+                                     self.showAlert("Sorry!!... User did not authenticate successfully")
+                                 }
+                             }
+                         }
+                     } else {
+                         // Could not evaluate policy; look at authError and present an appropriate message to user
+                         showAlert("Sorry!!.. Could not evaluate policy.")
+                     }
+                     
+                     
+                     
+                 }
         
     }
     
@@ -54,6 +88,8 @@ class LogInViewController: UIViewController {
     
     @IBAction func logInButtonTapped(_ sender: UIButton) {
         currentAction = .EmailLogIn
+
+        
     }
     
     
@@ -174,6 +210,30 @@ class LogInViewController: UIViewController {
         }
 
     }
+    // Alert styles for invalid authentication
+    // ----------------------------------------------------------------------
+    func showAlert(_ message: String) {
+        let alert = UIAlertController(title: "Failed authentication", message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { action in
+            
+            //Used to change alert styles
+            switch action.style{
+            case .default:
+                print("default")
+                
+            case .cancel:
+                print("cancel")
+                
+            case .destructive:
+                print("destructive")
+                
+                
+            }}))
+        // Present alert via animation at compeletion do nothing
+        self.present(alert, animated: true, completion: nil)
+        
+    }
+    
     
  
     
