@@ -41,8 +41,13 @@ class ExisitingNoteViewController: UIViewController {
             return
         }
         
+        guard let note = textView.text else {
+                   print("you're horrible, sorry")
+                   return
+               }
+        
         createNoteDictionary.updateValue(Date().description, forKey: "date")
-        createNoteDictionary.updateValue(textView.text, forKey: "note")
+        createNoteDictionary.updateValue(note, forKey: "note")
         Firestore.firestore().collection("notes").document(id).collection("note").document(self.currentNoteId).setData(createNoteDictionary) { (error) in
             if error != nil {
                 print("ExistingNoteVC -  Error saving curent note data: \(error!.localizedDescription)")

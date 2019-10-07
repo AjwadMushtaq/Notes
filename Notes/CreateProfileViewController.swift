@@ -15,10 +15,6 @@ protocol CreateProfileProtocol {
     func doneCreatingProfile(profile:[String:Any]?, sender:UIViewController?)
 }
 
-
-
-
-
 class CreateProfileViewController: UIViewController , UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate {
     
     

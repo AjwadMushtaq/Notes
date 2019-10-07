@@ -35,9 +35,6 @@ class NotesViewController: UIViewController,UITableViewDelegate,UITableViewDataS
     
     
     
-    
-    
-    
     // MARK: - Action
     @IBAction func backButtonPressed(_ sender: UIButton) {
         self.navigationController?.popViewController(animated: true)
@@ -108,9 +105,6 @@ class NotesViewController: UIViewController,UITableViewDelegate,UITableViewDataS
     
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         
-       
-                
-        
        let deleteAction = UIContextualAction(style: .normal, title: "delete") { (action, view, completionHandler) in
         
         guard let id = Auth.auth().currentUser?.uid else {
@@ -120,9 +114,6 @@ class NotesViewController: UIViewController,UITableViewDelegate,UITableViewDataS
         let item = self.documentId[indexPath.row]
         
         Firestore.firestore().collection("notes").document(id).collection("note").document(item).delete()
-        
-        
-        
         
        print("delete")
        completionHandler(true)

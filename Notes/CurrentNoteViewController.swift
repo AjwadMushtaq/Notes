@@ -10,7 +10,7 @@ import UIKit
 import Firebase
 
 class CurrentNoteViewController: UIViewController {
-
+    
     @IBOutlet var topLable: UILabel!
     @IBOutlet var dateLable: UILabel!
     @IBOutlet var noteTextView: UITextView!
@@ -19,41 +19,52 @@ class CurrentNoteViewController: UIViewController {
     
     
     var createNoteDictionary = [String: Any]() {
-           didSet {
-               print("Current data: \(createNoteDictionary)")
-           }
-       }
+        didSet {
+            print("Current data: \(createNoteDictionary)")
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
         dateLable.text = Date().description
         
     }
     
+    // MARK: - Action
     @IBAction func backButtonPressed(_ sender: UIButton) {
         
         guard let id = Auth.auth().currentUser?.uid else {
-                   print("you're horrible, sorry")
-                   return
-               }
+            print("you're horrible, sorry")
+            return
+        }
         
-        createNoteDictionary.updateValue(dateLable.text, forKey: "date")
-       createNoteDictionary.updateValue(noteTextView.text, forKey: "note")
+        guard let date = dateLable.text else {
+            print("you're horrible, sorry")
+            return
+        }
+        
+        guard let note  = noteTextView.text else {
+            print("you're horrible, sorry")
+            return
+        }
+        
+        createNoteDictionary.updateValue(date, forKey: "date")
+        createNoteDictionary.updateValue(note, forKey: "note")
         Firestore.firestore().collection("notes").document(id).collection("note").document().setData(createNoteDictionary) { (error) in
-                   if error != nil {
-                       print("Current Note VC -  Error saving curent note data: \(error!.localizedDescription)")
-                   } else {
-                       print("Current Note VC - All good, saved the current note")
-                       self.navigationController?.dismiss(animated: true, completion: nil)
-                       self.navigationController?.popViewController(animated: true)
-                   }
-
-               }
- 
+            if error != nil {
+                print("Current Note VC -  Error saving curent note data: \(error!.localizedDescription)")
+            } else {
+                print("Current Note VC - All good, saved the current note")
+                self.navigationController?.dismiss(animated: true, completion: nil)
+                self.navigationController?.popViewController(animated: true)
+            }
+            
+        }
+        
     }
     
     
-
+    
 }

@@ -157,10 +157,6 @@ class HomeViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
                     let newNote = Note(date: document["date"] as! String, note: document["note"] as!String)
                     
                     self.notesArray.append(newNote)
-                    
-                    
-                    
-                    
                     self.documentId.append(document.documentID)
                     
                 }

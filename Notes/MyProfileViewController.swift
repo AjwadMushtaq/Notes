@@ -98,13 +98,14 @@ class MyProfileViewController: UIViewController,UITableViewDelegate,UITableViewD
     
     
     
-    
+    // MARK: - TableView
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return descriptions.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! CreateProfileTableViewCell
+        cell.cellOkButton.isHidden = true
         cell.cellLabel.text = descriptions[indexPath.row]
         cell.cellTF.text = currentUserProfile?[properties[indexPath.row]] as? String ?? "unknown"
         return cell
