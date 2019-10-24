@@ -50,9 +50,12 @@ class CurrentNoteViewController: UIViewController {
             return
         }
         
+        let ref = Firestore.firestore().collection("notes").document(id).collection("note").document()
+        
         createNoteDictionary.updateValue(date, forKey: "date")
         createNoteDictionary.updateValue(note, forKey: "note")
-        Firestore.firestore().collection("notes").document(id).collection("note").document().setData(createNoteDictionary) { (error) in
+        createNoteDictionary.updateValue(ref.documentID, forKey: "noteId")
+        ref.setData(createNoteDictionary) { (error) in
             if error != nil {
                 print("Current Note VC -  Error saving curent note data: \(error!.localizedDescription)")
             } else {

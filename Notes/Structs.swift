@@ -12,5 +12,7 @@ import Foundation
 struct Note {
     var  date : String
     var  note : String
+    var  id   : String
+    
     
 }

@@ -8,21 +8,30 @@
 
 import UIKit
 import Firebase
-class NotesViewController: UIViewController,UITableViewDelegate,UITableViewDataSource {
+class NotesViewController: UIViewController,UITableViewDelegate,UITableViewDataSource,UISearchResultsUpdating {
+   
     
+    func updateSearchResults(for searchController: UISearchController) {
+        filterContentForSearchText(searchController.searchBar.text!)
+    }
+    
+    let searchController = UISearchController(searchResultsController: nil)
     
     var documentId: [String] = []
     var notesArray : [Note] = []
+    var filterredNotesArray : [Note] = []
     var currentid = String()
     var currentNote = String()
     
-    
-    
-    
+
     @IBOutlet var notesTv: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        searchController.searchResultsUpdater = self as? UISearchResultsUpdating
+        searchController.hidesNavigationBarDuringPresentation = false
+        searchController.dimsBackgroundDuringPresentation = false
+        notesTv.tableHeaderView = searchController.searchBar
         
         
     }
@@ -60,7 +69,7 @@ class NotesViewController: UIViewController,UITableViewDelegate,UITableViewDataS
                 for document in querySnapshot!.documents {
                     print("\(document.documentID) => \(document.data())")
                     
-                    let newNote = Note(date: document["date"] as! String, note: document["note"] as!String)
+                    let newNote = Note(date: document["date"] as! String, note: document["note"] as!String, id: document["noteId"] as! String)
                     
                     self.notesArray.append(newNote)
                     
@@ -80,12 +89,27 @@ class NotesViewController: UIViewController,UITableViewDelegate,UITableViewDataS
     
     // MARK: - TableView
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return documentId.count
+        
+        if isFiltering(){
+            return filterredNotesArray.count
+        }
+        
+        return notesArray.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        cell.textLabel?.text = notesArray[indexPath.row].note
+        
+        let  notes :  [Note]
+
+        if isFiltering(){
+            notes = filterredNotesArray
+            
+        }
+        else{
+            notes = notesArray
+        }
+        cell.textLabel?.text = notes[indexPath.row].note
         return cell
         
     }
@@ -94,12 +118,21 @@ class NotesViewController: UIViewController,UITableViewDelegate,UITableViewDataS
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
        
-        self.currentid = documentId[indexPath.row]
-        self.currentNote = notesArray[indexPath.row].note
+        if isFiltering(){
+            self.currentid = filterredNotesArray[indexPath.row].id
+            self.currentNote = filterredNotesArray[indexPath.row].note
+            self.filterredNotesArray.removeAll()
+            
+        } else {
+            self.currentid = notesArray[indexPath.row].id
+            self.currentNote = notesArray[indexPath.row].note
+            self.notesArray.removeAll()
+            
+        }
         
-        print(documentId[indexPath.row])
-        print(notesArray[indexPath.row].note)
-        self.notesArray.removeAll()
+//        print(documentId[indexPath.row])
+//        print(notesArray[indexPath.row].note)
+        
         self.performSegue(withIdentifier: "existingNote", sender: self)
     }
     
@@ -111,7 +144,17 @@ class NotesViewController: UIViewController,UITableViewDelegate,UITableViewDataS
             print("you're horrible, sorry")
             return
         }
-        let item = self.documentId[indexPath.row]
+        
+       
+        var item = self.notesArray[indexPath.row].id
+        
+        if self.isFiltering(){
+            item = self.filterredNotesArray[indexPath.row].id
+            
+        }
+        
+        
+      
         
         Firestore.firestore().collection("notes").document(id).collection("note").document(item).delete()
         
@@ -122,6 +165,39 @@ class NotesViewController: UIViewController,UITableViewDelegate,UITableViewDataS
        
        return UISwipeActionsConfiguration(actions: [deleteAction])
        }
+    
+    
+    
+    
+    
+    // Function to specify what to filter data by
+    // scope set to all checks if there is any string in the search bar
+    // --------------------------------------------------------------------------
+    func filterContentForSearchText(_ searchText: String, scope: String = "All") {
+        
+        
+        filterredNotesArray = notesArray.filter({ (Note) -> Bool in
+            return Note.note.lowercased().lowercased().contains(searchText.lowercased())
+        })
+   
+            
+           
+       
+        
+        notesTv.reloadData()
+    }
+    
+    
+    func searchBarIsEmpty() -> Bool {
+        // Returns true if the text is empty or nil
+        return searchController.searchBar.text?.isEmpty ?? true
+    }
+    
+    // Function used to detremine which array to dislay filetred array or normal array
+    // ------------------------------------------------------------------
+    func isFiltering() -> Bool {
+        return searchController.isActive && !searchBarIsEmpty()
+    }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.destination is ExisitingNoteViewController{

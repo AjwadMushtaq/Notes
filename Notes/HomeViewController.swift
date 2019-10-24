@@ -139,31 +139,31 @@ class HomeViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
     }
     
     
-    func downloadNotesData() {
-        
-        guard let id = Auth.auth().currentUser?.uid else {
-            print("you're horrible, sorry")
-            return
-        }
-        
-        
-        Firestore.firestore().collection("notes").document(id).collection("note").getDocuments() { (querySnapshot, err) in
-            if let err = err {
-                print("Error getting Notes documents: \(err)")
-            } else {
-                for document in querySnapshot!.documents {
-                    print("\(document.documentID) => \(document.data())")
-                    
-                    let newNote = Note(date: document["date"] as! String, note: document["note"] as!String)
-                    
-                    self.notesArray.append(newNote)
-                    self.documentId.append(document.documentID)
-                    
-                }
-            }
-        }
-        
-    }
+//    func downloadNotesData() {
+//        
+//        guard let id = Auth.auth().currentUser?.uid else {
+//            print("you're horrible, sorry")
+//            return
+//        }
+//
+//
+//        Firestore.firestore().collection("notes").document(id).collection("note").getDocuments() { (querySnapshot, err) in
+//            if let err = err {
+//                print("Error getting Notes documents: \(err)")
+//            } else {
+//                for document in querySnapshot!.documents {
+//                    print("\(document.documentID) => \(document.data())")
+//
+//                    let newNote = Note(date: document["date"] as! String, note: document["note"] as!String, id: document["noteId"]  )
+//
+//                    self.notesArray.append(newNote)
+//                    self.documentId.append(document.documentID)
+//
+//                }
+//            }
+//        }
+//
+//    }
     
     func logIn() {
         //if Auth.auth().currentUser == nil {
