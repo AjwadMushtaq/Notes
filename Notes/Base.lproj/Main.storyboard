@@ -493,30 +493,36 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Z4V-jC-4HQ">
-                                <rect key="frame" x="26" y="44" width="34" height="30"/>
+                                <rect key="frame" x="20" y="44" width="34" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="a8e-xC-avP"/>
+                                </constraints>
                                 <state key="normal" title="Back"/>
                                 <connections>
                                     <action selector="backButtonPressed:" destination="9zE-6e-g7J" eventType="touchUpInside" id="c1k-UO-6Z7"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="contactAdd" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Iy-e2-sqj">
-                                <rect key="frame" x="359" y="47" width="25" height="24"/>
+                                <rect key="frame" x="369" y="44" width="25" height="24"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="24" id="540-1e-Zrl"/>
+                                </constraints>
                                 <connections>
                                     <segue destination="V5O-aa-7uo" kind="show" id="uQU-Ce-yh4"/>
                                 </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="oSo-QL-g8I">
-                                <rect key="frame" x="15" y="82" width="384" height="773"/>
+                                <rect key="frame" x="10" y="92" width="394" height="792"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="773" id="8di-yv-QcX"/>
+                                    <constraint firstAttribute="height" constant="792" id="ad3-xc-3Eb"/>
                                 </constraints>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" id="yY5-ge-YaD">
-                                        <rect key="frame" x="0.0" y="28" width="384" height="43.5"/>
+                                        <rect key="frame" x="0.0" y="28" width="394" height="43.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="yY5-ge-YaD" id="78C-v5-8nz">
-                                            <rect key="frame" x="0.0" y="0.0" width="384" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="394" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -529,16 +535,13 @@
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="Z4V-jC-4HQ" firstAttribute="top" secondItem="uZr-fE-cKo" secondAttribute="top" id="4XD-v5-3ih"/>
-                            <constraint firstItem="oSo-QL-g8I" firstAttribute="leading" secondItem="uZr-fE-cKo" secondAttribute="leading" constant="15" id="4je-MP-0Jl"/>
-                            <constraint firstItem="8Iy-e2-sqj" firstAttribute="top" secondItem="uZr-fE-cKo" secondAttribute="top" constant="3" id="704-7o-CNL"/>
-                            <constraint firstItem="oSo-QL-g8I" firstAttribute="top" secondItem="Z4V-jC-4HQ" secondAttribute="bottom" constant="8" id="7Nf-qw-Nn6"/>
-                            <constraint firstItem="uZr-fE-cKo" firstAttribute="trailing" secondItem="8Iy-e2-sqj" secondAttribute="trailing" constant="30" id="IO3-mv-scA"/>
-                            <constraint firstItem="uZr-fE-cKo" firstAttribute="trailing" secondItem="oSo-QL-g8I" secondAttribute="trailing" constant="15" id="NNh-Y5-5Tb"/>
-                            <constraint firstItem="oSo-QL-g8I" firstAttribute="top" secondItem="Z4V-jC-4HQ" secondAttribute="bottom" constant="8" id="ZeQ-qM-mU4"/>
-                            <constraint firstItem="oSo-QL-g8I" firstAttribute="leading" secondItem="uZr-fE-cKo" secondAttribute="leading" constant="15" id="ldv-CU-S2o"/>
-                            <constraint firstItem="Z4V-jC-4HQ" firstAttribute="leading" secondItem="uZr-fE-cKo" secondAttribute="leading" constant="26" id="mjx-KX-dwL"/>
-                            <constraint firstItem="uZr-fE-cKo" firstAttribute="trailing" secondItem="oSo-QL-g8I" secondAttribute="trailing" constant="15" id="mtx-MN-0Pl"/>
+                            <constraint firstItem="uZr-fE-cKo" firstAttribute="trailing" secondItem="oSo-QL-g8I" secondAttribute="trailing" constant="10" id="0vl-3q-lMx"/>
+                            <constraint firstItem="Z4V-jC-4HQ" firstAttribute="leading" secondItem="uZr-fE-cKo" secondAttribute="leading" constant="20" id="8RP-kc-Rkp"/>
+                            <constraint firstItem="oSo-QL-g8I" firstAttribute="leading" secondItem="uZr-fE-cKo" secondAttribute="leading" constant="10" id="BLm-ep-2Kq"/>
+                            <constraint firstItem="Z4V-jC-4HQ" firstAttribute="top" secondItem="uZr-fE-cKo" secondAttribute="top" id="QqU-hr-2ba"/>
+                            <constraint firstItem="uZr-fE-cKo" firstAttribute="trailing" secondItem="8Iy-e2-sqj" secondAttribute="trailing" constant="20" id="mYi-6Z-mFy"/>
+                            <constraint firstItem="oSo-QL-g8I" firstAttribute="top" secondItem="Z4V-jC-4HQ" secondAttribute="bottom" constant="18" id="rDI-ea-s0J"/>
+                            <constraint firstItem="8Iy-e2-sqj" firstAttribute="top" secondItem="uZr-fE-cKo" secondAttribute="top" id="yAi-mg-GbS"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="uZr-fE-cKo"/>
                     </view>

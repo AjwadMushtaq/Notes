@@ -29,7 +29,7 @@ class NotesViewController: UIViewController,UITableViewDelegate,UITableViewDataS
     override func viewDidLoad() {
         super.viewDidLoad()
         searchController.searchResultsUpdater = self as? UISearchResultsUpdating
-        searchController.hidesNavigationBarDuringPresentation = false
+        //searchController.hidesNavigationBarDuringPresentation = false
         searchController.dimsBackgroundDuringPresentation = false
         notesTv.tableHeaderView = searchController.searchBar
         
