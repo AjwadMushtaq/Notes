@@ -202,6 +202,7 @@ class NotesViewController: UIViewController,UITableViewDelegate,UITableViewDataS
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.destination is ExisitingNoteViewController{
             let vc = segue.destination as! ExisitingNoteViewController
+            self.searchController.dismiss(animated: true, completion: nil)
             vc.currentNoteId = self.currentid
             vc.note = self.currentNote
             
